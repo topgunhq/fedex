@@ -176,7 +176,7 @@ module Fedex
             end
             if package[:customer_refrences]
               xml.CustomerReferences{
-              package[:customer_refrences].each do |value|
+              package[:customer_refrences].each_value do |value|
                  xml.CustomerReferenceType 'CUSTOMER_REFERENCE'
                  xml.Value                 value
               end
@@ -216,8 +216,8 @@ module Fedex
             value.each do |v|
               xml.send element do |x|
                 hash_to_xml(x, v)
-              end  
-            end  
+              end
+            end
           else
             xml.send element, value
           end
